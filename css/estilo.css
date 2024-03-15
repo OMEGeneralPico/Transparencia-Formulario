@@ -1,0 +1,13 @@
+.nav{
+    background-color: green;
+    color: green;
+}
+@media screen and (min-width: 1000px) {
+    .fixed-bottom {
+        position: fixed;
+        bottom: 20px; /* Distancia desde la parte inferior */
+    
+       
+      }
+}
+
