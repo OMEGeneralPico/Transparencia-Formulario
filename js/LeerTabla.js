@@ -55,7 +55,7 @@ function getData() {
             if (values[index][0] == dni && values[index][1] == pass ) {
                 console.log(values[index]);
                 var datos = values[index];
-              window.location.href = './pages/Home.html';
+              window.location.href = 'pages/Home.html';
                 
             }
 
