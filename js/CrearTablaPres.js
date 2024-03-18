@@ -1,3 +1,4 @@
+
 fetch('../json/entidades.json')
   .then(response => response.json())
   .then(data => {
@@ -52,7 +53,7 @@ fetch('../json/entidades.json')
     }
   
 
-
+    console.log(window.miVariableGlobal);
 
    
   

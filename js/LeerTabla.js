@@ -1,3 +1,4 @@
+
 async function readJson() {
     const xhr = new XMLHttpRequest();
 
@@ -23,9 +24,11 @@ async function readJson() {
 
     return data;
 }
-
+document.getElementById('botonIngreso').addEventListener('click',function(){
+    getData();
+});
 gapi.load('client', initClient);
-
+var glob;
 async function initClient() {
     const data = await readJson();
     glob = data;
@@ -41,17 +44,24 @@ async function initClient() {
 function getData() {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: glob["GSheet"]["spreadsheetId"],
-        range: 'Entrevistados!A2:D',
+        range: 'Users!A2:D',
     }).then(function (response) {
         var values = response.result.values;
         // Procesa y muestra los datos en tu sitio web
 
         var dni = document.getElementById("dni").value;
-        for (let index = 0; index < values.length; index++) {
-            if (values[index][0] == dni) {
-                window.location.href = './pages/formulario.html';
+        var pass = document.getElementById("pass").value;
+        for (let index = 0; index < values.length; index++) {var datos = values[index];
+            if (values[index][0] == dni && values[index][1] == pass ) {
+                console.log(values[index]);
+                var datos = values[index];
+              window.location.href = './pages/Home.html';
+                
             }
 
         }
     });
 } 
+
+ 
+
