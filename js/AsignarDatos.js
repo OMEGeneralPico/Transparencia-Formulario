@@ -1,1 +1,2 @@
-console.log(window.datos);
+var globalVariable = "Hola mundo";
+console.log(window);
