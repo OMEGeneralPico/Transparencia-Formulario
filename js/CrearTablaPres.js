@@ -1,5 +1,5 @@
 
-fetch('../json/entidades.json')
+fetch('../../json/entidades.json')
   .then(response => response.json())
   .then(data => {
     TablaAuto(data); // Muestra el contenido del archivo JSON en la consola
@@ -10,6 +10,7 @@ fetch('../json/entidades.json')
   .catch(error => console.error('Error al cargar el archivo JSON:', error));
 
   function TablaAuto(data) {
+
     const tbody = document.getElementById("tablaPresupuesto");
     for (let index = 0; index < data["Economia"].length; index++) {
 

@@ -3,7 +3,7 @@ async function readJson() {
     const xhr = new XMLHttpRequest();
 
     // Abre la solicitud
-    xhr.open('GET', '../json/apis.json');
+    xhr.open('GET', '../../json/apis.json');
 
     // Espera a que la solicitud se complete
     const response = await new Promise((resolve, reject) => {
@@ -24,9 +24,15 @@ async function readJson() {
 
     return data;
 }
-document.getElementById('botonIngreso').addEventListener('click',function(){
-    getData();
-});
+try {
+    document.getElementById('botonIngreso').addEventListener('click',function(){
+        getData();
+      
+   }); 
+} catch (error) {
+    
+}
+
 gapi.load('client', initClient);
 var glob;
 async function initClient() {
@@ -41,27 +47,49 @@ async function initClient() {
 }
 
 // Función para obtener datos de la hoja de cálculo
-function getData() {
-    gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: glob["GSheet"]["spreadsheetId"],
-        range: 'Users!A2:D',
-    }).then(function (response) {
-        var values = response.result.values;
-        // Procesa y muestra los datos en tu sitio web
+async function getData() {
+    try {
+        const response = await gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: glob["GSheet"]["spreadsheetId"],
+            range: 'Users!A2:F',
+        });
 
-        var dni = document.getElementById("dni").value;
-        var pass = document.getElementById("pass").value;
-        for (let index = 0; index < values.length; index++) {var datos = values[index];
-            if (values[index][0] == dni && values[index][1] == pass ) {
-                console.log(values[index]);
-                var datos = values[index];
-              window.location.href = 'pages/Home.html';
-                
+        const usersValues = response.result.values;
+        const dni = document.getElementById("dni").value;
+        const pass = document.getElementById("pass").value;
+
+        for (let index = 0; index < usersValues.length; index++) {
+            const userData = usersValues[index];
+
+            if (userData[0] === dni && userData[1] === pass) {
+                console.log(userData);
+                sessionStorage.setItem("Area", userData[2]);
+                sessionStorage.setItem("Depto", userData[3]);
+                sessionStorage.setItem("Accessos", userData[4]);
+               
+                const nomenclaturaResponse = await gapi.client.sheets.spreadsheets.values.get({
+                    spreadsheetId: glob["GSheet"]["spreadsheetId"],
+                    range: 'Nomeclatura!A2:E',
+                });
+
+                const nomenclaturaValues = nomenclaturaResponse.result.values;
+                console.log(nomenclaturaValues);
+
+                sessionStorage.setItem("Fechas", JSON.stringify(nomenclaturaValues));
+
+                // Crear elementos HTML después de obtener los datos
+                window.location.href = 'pages/Home.html';
+                return;
             }
-
         }
-    });
-} 
+
+        alert("Usuario no encontrado");
+    } catch (error) {
+        console.error("Error al obtener datos:", error);
+        alert("Ocurrió un error al obtener los datos. Por favor, intenta nuevamente.");
+    }
+}
+
 
  
 

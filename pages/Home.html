@@ -8,13 +8,39 @@
 
     <title>Document</title>
 </head>
-<body>
-    <div class="nav">Hola pepe</div> <div
-    class=" justify-content-center " id=""
+<body><ul class="nav nav-tabs nav-fill" id="navigator">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+    </li>
+  
+   
+    
+  </ul>
+
+  <div
+    class="container "
   >
   <div
-    class="row justify-content-center align-items-center "
-  ><h1 id="miDiv">Hola</h1></div>
+    class="row justify-content-center align-items-center g-2"
+  >
+
+    <div class="col">  <h1 class="mt-4">Tus actualizaciones pendientes</h1></div>
+    <ul class="list-group" id="recordatorios">
+       
+       
+    </ul>
+    
+
+
+  
+
+  </div>
+  
+  
+  </div>
+     
 </body>
-<script type="module" src="../js/AsignarDatos.js"></script>
+<script src="/js/CrearRecordatorios.js"></script>
+<script type="module" src="/js/AsignarDatos.js"></script>
+
 </html>
