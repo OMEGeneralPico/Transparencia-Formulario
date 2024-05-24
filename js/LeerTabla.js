@@ -3,7 +3,7 @@ async function readJson() {
     const xhr = new XMLHttpRequest();
 
     // Abre la solicitud
-    xhr.open('GET', '../../json/apis.json');
+    xhr.open('GET', '../../../json/apis.json');
 
     // Espera a que la solicitud se complete
     const response = await new Promise((resolve, reject) => {
@@ -45,22 +45,31 @@ async function initClient() {
         // Llama a tus funciones aquí
     });
 }
+async function EncontrarTabla(tabla){
+    try {
+        const response = await gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: glob["GSheet"]["spreadsheetId"],
+            range: tabla+'!A2:F',
+        });}catch (error) {
 
-// Función para obtener datos de la hoja de cálculo
+        }
+}
+
 async function getData() {
     try {
         const response = await gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: glob["GSheet"]["spreadsheetId"],
             range: 'Users!A2:F',
         });
-
+       
+        
         const usersValues = response.result.values;
         const dni = document.getElementById("dni").value;
         const pass = document.getElementById("pass").value;
 
         for (let index = 0; index < usersValues.length; index++) {
             const userData = usersValues[index];
-
+            console.log("hola");
             if (userData[0] === dni && userData[1] === pass) {
                 console.log(userData);
                 sessionStorage.setItem("Area", userData[2]);

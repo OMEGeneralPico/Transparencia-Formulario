@@ -2,7 +2,9 @@
     background-color: rgb(0, 162,127);
     color: rgb(0, 162,127);
 }
-
+th{
+    background-color: gray;
+}
 @media screen and (min-width: 1000px) {
     .fixed-bottom {
         position: fixed;
