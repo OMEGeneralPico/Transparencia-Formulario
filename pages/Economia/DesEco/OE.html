@@ -249,8 +249,12 @@
         class="row  align-items-center g-2"
       >
       <div class="d-grid gap-2 col-3 mx-auto agregar"> <button type="button" id="crearParticipacion" idIndex="selectParticipacion" lista='["Participaciones"]' indexglobal="0" ids='["nombreParticipacion","colaboracionParticipacion","lugarParticipacion","actividadParticipacion"]' class="btn btn-primary">Agregar</button></div>
-        <div class="d-grid gap-2 col-3 mx-auto"> <button class="btn btn-danger" type="button">Quitar</button></div>
+      <div class="d-grid gap-2 col-3 mx-auto">
+        <button id="quitarParticipacion" class="btn btn-danger" type="button">Quitar</button>
+      </div>
+       
         <div class="col-6">
+          
         </div>
         </div>
       
@@ -283,12 +287,13 @@
               <label for="actividadParticipacion" class="form-label">Descripción de la actividad</label>
               <input type="text" class="form-control" id="actividadParticipacion" placeholder="Descripción de la actividad" />
           </div>
-      </div>
+      </div> <div class="d-grid gap-2 col-12 mx-auto "> <button type="button" id="guardar" idIndex="selectParticipacion" lista='["Participaciones"]'  ids='["nombreParticipacion","colaboracionParticipacion","lugarParticipacion","actividadParticipacion"]' class="btn btn-success guardar">Agregar</button></div>
+    
   </div>
   </div>
   </div>
 </body>
-<script src="../../../js/FormatoNumeros.js"></script>
+
 <script src="/js/ListadoGenerico.js"></script>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
