@@ -30,9 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Crear el heatmap y añadirlo al mapa
                 L.heatLayer(heatData, {
-                    radius: 25, // Radio de cada punto de calor
-                    blur: 15, // Nivel de desenfoque
-                    maxZoom: 17 // Nivel máximo de zoom donde el heatmap es visible
+                    radius: 22, // Radio de cada punto de calor
+                    blur: 25, // Nivel de desenfoque
+                    maxZoom: 1 // Nivel máximo de zoom donde el heatmap es visible
                 }).addTo(map);
             };
             reader.readAsText(file);
@@ -41,3 +41,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+/* 
+var reader = new FileReader();
+reader.onload = function(e) {
+    var content = e.target.result;
+    var json = JSON.parse(content);
+
+    // Extraer las coordenadas de todos los puntos
+    var markers = [];
+    Object.keys(json).forEach(function(category) {
+        json[category].forEach(function(item) {
+            if (item.Coord && item.Coord.lat && item.Coord.lng) {
+                var marker = L.marker([item.Coord.lat, item.Coord.lng]);
+                markers.push(marker);
+            }
+        });
+    });
+
+    // Crear un grupo de marcadores y añadirlo al mapa
+    var markerGroup = L.layerGroup(markers);
+    markerGroup.addTo(map);
+};
+reader.readAsText(file);
+*/

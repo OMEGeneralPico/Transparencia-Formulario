@@ -17,6 +17,7 @@ Array.from(botonesAgregar).forEach(boton => {
         const optionElement = document.createElement('option');
         const paginationContainer = document.getElementById(idIndex);
 
+        console.log('estoy en la lista '+ listaNombre);
         // Determinar el índice local sin almacenar valores
         const indexLocal = window[listaNombre].length;
         let indexNombre = listaNombre + 'Index';
@@ -24,15 +25,23 @@ Array.from(botonesAgregar).forEach(boton => {
 
         // Agregar un array vacío para mantener la consistencia de los índices
         window[listaNombre].push([]);
-       
+        const mapanombre = event.target.getAttribute('mapa');
+         console.log(mapanombre == null);
+            if (mapanombre  != null) {
+                removeAllMarkers(mapanombre,listaNombre);
+            }
         optionElement.textContent = 'Nro ' + (indexLocal + 1);
         optionElement.value = indexLocal;
 
         // Crear listener para la opción
         optionElement.addEventListener('click', function() {
             // Asignar el índice local al índice global
-            window[indexNombre] = parseInt(optionElement.value);
-        
+            const valorE = optionElement.value;
+            window[indexNombre] = valorE;
+            if (mapanombre  != null) {
+             
+                removeAllMarkers(mapanombre,listaNombre,valorE);
+            }
             if (window[listaNombre][window[indexNombre]].length > 0) {
                 const valoresActuales = window[listaNombre][window[indexNombre]];
                 valoresActuales.forEach((valor, index) => {
@@ -43,6 +52,8 @@ Array.from(botonesAgregar).forEach(boton => {
                     document.getElementById(id).value = '';
                 });
             }
+           
+          
         });
 
         paginationContainer.appendChild(optionElement);
@@ -92,23 +103,31 @@ Array.from(botonesAgregar).forEach(boton => {
 });
 
 // Listener para botón 'guardar'
-document.getElementById('guardar').addEventListener('click', function(event) {
-    const ids = JSON.parse(this.getAttribute('ids'));
-    const listaNombres = JSON.parse(this.getAttribute('lista'));
-    let listaNombre = listaNombres[0];
-    let indexNombre = listaNombre + 'Index';
-
-    const valores = ids.map(id => document.getElementById(id).value);
-    if (window[indexNombre] !== undefined && window[indexNombre] !== null) {
-        window[listaNombre][window[indexNombre]] = valores;
-    } else {
-        window[listaNombre].push(valores);
-        window[indexNombre] = window[listaNombre].length - 1;
-    }
-
-    console.log('Información guardada:', window[listaNombre]);
+document.querySelectorAll('.guardar').forEach(button => {
+    button.addEventListener('click', function(event) {
+       
+        const ids = JSON.parse(this.getAttribute('ids'));
+        const listaNombres = JSON.parse(this.getAttribute('lista'));
+        console.log(listaNombres);
+        let listaNombre = listaNombres[0];
+        let indexNombre = listaNombre + 'Index';
+       
+        const valores = ids.map(id => document.getElementById(id).value);
+        console.log(window[indexNombre]);
+        if (window[indexNombre] !== undefined && window[indexNombre] !== null) {
+            window[listaNombre][window[indexNombre]] = valores;
+        } else {
+            window[listaNombre].push(valores);
+            window[indexNombre] = window[listaNombre].length - 1;
+        }
+        if (mapaBool) {
+            document.getElementById('mapa'+ listaNombre).removeLayer;
+        }
+        console.log('Información guardada:', window[listaNombre]);
+    });
 });
 
+mapaBool = false;
 // Listener para botón 'quitar'
 document.getElementById('quitarParticipacion').addEventListener('click', function() {
     if (typeof window.eliminarElemento === 'function') {
