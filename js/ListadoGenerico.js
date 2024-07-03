@@ -45,7 +45,7 @@ Array.from(botonesAgregar).forEach(boton => {
             if (window[listaNombre][window[indexNombre]].length > 0) {
                 const valoresActuales = window[listaNombre][window[indexNombre]];
                 valoresActuales.forEach((valor, index) => {
-                    document.getElementById(ids[index]).value = valor;
+                    document.getElementById(ids[index]).value += valor;
                 });
             } else {
                 ids.forEach(id => {
@@ -105,28 +105,46 @@ Array.from(botonesAgregar).forEach(boton => {
 // Listener para botón 'guardar'
 document.querySelectorAll('.guardar').forEach(button => {
     button.addEventListener('click', function(event) {
-       
+        
         const ids = JSON.parse(this.getAttribute('ids'));
         const listaNombres = JSON.parse(this.getAttribute('lista'));
-        console.log(listaNombres);
+        console.log("hola");
         let listaNombre = listaNombres[0];
         let indexNombre = listaNombre + 'Index';
-       
+        console.log(listaNombre+"Final");
+        
         const valores = ids.map(id => document.getElementById(id).value);
         console.log(window[indexNombre]);
         if (window[indexNombre] !== undefined && window[indexNombre] !== null) {
             window[listaNombre][window[indexNombre]] = valores;
+            
+            document.getElementById(listaNombre+"Final").value =  "[" + Separar(listaNombre) + "]";
         } else {
             window[listaNombre].push(valores);
             window[indexNombre] = window[listaNombre].length - 1;
+            document.getElementById(listaNombre+"Final").value = Separar(listaNombre);
         }
         if (mapaBool) {
             document.getElementById('mapa'+ listaNombre).removeLayer;
         }
+
         console.log('Información guardada:', window[listaNombre]);
     });
 });
 
+function Separar(nombreArray) {
+    var size = window[nombreArray].length;
+    var stringo = '';
+    for (let index = 0; index < size; index++) {
+        if (index != 0) {
+            
+            stringo += ',';
+        }
+        stringo += "[" + window[nombreArray][index]  + "]"; 
+      
+    }
+    return stringo;
+}
 mapaBool = false;
 // Listener para botón 'quitar'
 document.getElementById('quitarParticipacion').addEventListener('click', function() {

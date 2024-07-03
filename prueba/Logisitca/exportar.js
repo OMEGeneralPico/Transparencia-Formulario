@@ -34,7 +34,7 @@ document.getElementById('addCoordinate').addEventListener('click', function() {
     var conjuntoNombre = document.getElementById('conjuntoNombre').value;
 
     // Validación de campos
-    if (coordValue && numero && persona && direccion && local && indice && renta && conjuntoNombre) {
+    if (coordValue && conjuntoNombre) {
         var latLng = coordValue.replace('Lat: ', '').replace('Lng: ', '').split(', ');
         var lat = parseFloat(latLng[0]);
         var lng = parseFloat(latLng[1]);
@@ -58,7 +58,7 @@ document.getElementById('addCoordinate').addEventListener('click', function() {
             locations[conjuntoNombre] = [];
         }
         locations[conjuntoNombre].push(newData);
-
+        console.log(locations);
         // Limpiar formulario (excepto nombre de conjunto)
         document.getElementById('dataForm').reset();
         document.getElementById('coord').value = '';
@@ -67,8 +67,8 @@ document.getElementById('addCoordinate').addEventListener('click', function() {
         if (document.getElementById('coordinates').querySelector(`option[value="${conjuntoNombre}"]`) === null) {
             var select = document.getElementById('coordinates');
             var option = document.createElement('option');
-            option.text = conjuntoNombre;
-            option.value = conjuntoNombre;
+            option.text = select.options.length;
+            option.value = select.options.length;
             select.add(option);
         }
     } else {
