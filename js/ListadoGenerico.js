@@ -137,14 +137,18 @@ function Separar(nombreArray) {
     var stringo = '';
     for (let index = 0; index < size; index++) {
         if (index != 0) {
-            
             stringo += ',';
         }
-        stringo += "[" + window[nombreArray][index]  + "]"; 
-      
+        const item = window[nombreArray][index];
+        if (Array.isArray(item)) {
+            stringo += '[' + item.map(el => typeof el === 'string' ? `"${el}"` : el).join(',') + ']';
+        } else {
+            stringo += typeof item === 'string' ? `"${item}"` : item;
+        }
     }
     return stringo;
 }
+
 mapaBool = false;
 // Listener para botón 'quitar'
 document.getElementById('quitarParticipacion').addEventListener('click', function() {
