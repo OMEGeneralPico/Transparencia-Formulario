@@ -14,7 +14,7 @@
 <body>
   <div class="container-fluid">
 
-    <form action="https://script.google.com/macros/s/AKfycbwkEPi9XWTNZlHUxUrNrGctgmlSsD55n0UQXFAgzYPCMWJapmdLrOFDBugLheMXWi1h4g/exec"
+    <form action="https://script.google.com/macros/s/AKfycbwmPtwWi0BTf9uW6ze7wljlHrtVrT8bHCCBb_cLB01R8N_pCvLPD07IIHDE0Qc0v7PZvA/exec"
       method="post">
       <input type="text" value="Des.Economico" style="display: none;" name="sheetName"
         placeholder="Nombre de la hoja de cálculo">
@@ -259,7 +259,7 @@
         </table>
       </div>
       <div class="container ">
-        <h2>Linea Nuevas Economias </h2>
+        <h2>Ley 2358 </h2>
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -349,7 +349,7 @@
               <td>
                 <div>
 
-                  <input name="Importe4" type="text" class="form-control form-control-lg" name="" id=""
+                  <input name="Importe4" type="text" class="form-control form-control-lg" name="PYM-Importe" id=""
                     placeholder="" />
 
                 </div>
@@ -360,7 +360,7 @@
 
             <tr>
               <td rowspan="1">Cantidad</td>
-              <td> <input name="Cantidad4" type="text" class="form-control form-control-lg" name="" id=""
+              <td> <input name="Cantidad4" type="text" class="form-control form-control-lg" name="PYM-Cantidad" id=""
                   placeholder="" /></td>
 
             </tr>
@@ -382,7 +382,26 @@
 
           
   </div>
-      <div class="container-md">
+  <div class="container-md">
+    <div class="col-4">
+      <h2>Pasantias </h2>
+
+
+    </div>
+
+
+    <div class="container">
+      <div class="row justify-content-center align-items-center g-2 mb-4" style="padding-bottom: 10px;">
+        <div class="col">
+          <label for="fecha_inicio" class="form-label">Total</label>
+          <input type="text" class="form-control-lg form-control" id="datepicker" name="Pasantias">
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+      <div class="container-md" style="display: block;">
         <div class="col-4">
           <h2>Programas </h2>
         </div>
@@ -473,25 +492,7 @@
     
      
   </div>
-  <div class="container-md">
-    <div class="col-4">
-      <h2>Pasantias </h2>
-
-
-    </div>
-
-
-    <div class="container">
-      <div class="row justify-content-center align-items-center g-2 mb-4" style="padding-bottom: 10px;">
-        <div class="col">
-          <label for="fecha_inicio" class="form-label">Total</label>
-          <input type="text" class="form-control-lg form-control" id="datepicker" name="Pasantias">
-        </div>
-
-      </div>
-
-    </div>
-  </div>
+  
   </div>
 
  
@@ -512,6 +513,8 @@
 
   _
   </div>
+  
+  
 </body>
 <script>
     nombre = document.getElementById("nombreCapacitacion");
