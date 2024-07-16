@@ -225,7 +225,8 @@
                   <!-- Opciones -->
                 </select>
               </div>
-              <div class="col-6">
+              <div class="col-6" >
+                <div id="DerechaSolicitudes" style="display: none;">
                 <div class="mb-3"> <label for="rubro" class="form-label">Rubro</label>
                   <input type="text" class="form-control" id="rubroSolicitud" name="Rubro" aria-describedby="helpId"
                     placeholder="" />
@@ -247,7 +248,7 @@
                   </select>
                 </div>
               </div>
-
+            </div>
             </div>
 
 
@@ -300,6 +301,7 @@
           </select>
         </div>
         <div class="col-6">
+          <div id="DerechaParticipaciones" style="display: none;">
           <div class="mb-3">
             <label for="nombreParticipacion" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombreParticipacion" name="Nombre" placeholder="Nombre" />
@@ -321,15 +323,15 @@
               placeholder="Descripción de la actividad" />
           </div><i class="fa fa-floppy-o" aria-hidden="false"></i>
         </div>
-        <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" idIndex="selectParticipacion"
-            lista='["Participaciones"]'
-            ids='["mes","nombreParticipacion","colaboracionParticipacion","lugarParticipacion","actividadParticipacion"]'
-            class="btn btn-success guardar">
-            <i class="fa-solid fa-floppy-disk"></i> Guardar
-          </button></div>
-        <input type="text" class="form-control" name="ParticipacionesFinal" id="ParticipacionesFinal" style="display: block"
+       
+        <input type="text" class="form-control" name="ParticipacionesFinal" id="ParticipacionesFinal" style="display: none"
           aria-describedby="helpId" placeholder="" />
-
+        </div> <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" idIndex="selectParticipacion"
+          lista='["Participaciones"]'
+          ids='["mes","nombreParticipacion","colaboracionParticipacion","lugarParticipacion","actividadParticipacion"]'
+          class="btn btn-success guardar">
+          <i class="fa-solid fa-floppy-disk"></i> Guardar
+        </button></div>
       </div>
     </div>
     </div>

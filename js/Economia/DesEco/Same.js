@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     // Seleccionar todos los elementos con la clase 'mapa'
     var mapElements = document.querySelectorAll('.mapa');
@@ -12,15 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
-
-        // Campo de entrada para las coordenadas (asumiendo que hay un campo de entrada dentro del mismo contenedor del mapa)
-     
-
+      
         // Variable para el marcador
         var marker;
        
-        mapas[mapElement.getAttribute('tipoMapa')+'map'] = map;
-        console.table(mapas);
+        mapas[mapElement.getAttribute('tipoMapa') + 'map'] = map;
+
         // Evento de clic en el mapa
         map.on('click', function(e) {
             const tipoMapa = mapElement.getAttribute('tipoMapa');
@@ -41,36 +37,40 @@ document.addEventListener('DOMContentLoaded', function() {
             // Guardar las coordenadas en el campo de entrada
             coordinatesInput.value = lat + ", " + lng;
         });
-        
-        
 
-        // Función para borrar cualquier marcador en el mapa
-      
-    });
+        // Ocultar el contenedor del mapa inicialmente
+        mapElement.style.display = 'none';
+    });  
 });
- function removeAllMarkers(nombreTipoMapa,variableGlobal,index) {
+
+function removeAllMarkers(nombreTipoMapa, variableGlobal, index) {
     console.log(window[variableGlobal]);
-    if(window[variableGlobal][index]== null || window[variableGlobal][index][2] == null ||  window[variableGlobal][index][2] == ''){
-
-    
-    if (marcadores[nombreTipoMapa] != null) {
-        mapas[nombreTipoMapa].removeLayer(marcadores[nombreTipoMapa]);
-        
-        marcadores[nombreTipoMapa] = null;
-    }else{
-       
-    }}else{
-
+    if (window[variableGlobal][index] == null || window[variableGlobal][index][2] == null || window[variableGlobal][index][2] == '') {
+        if (marcadores[nombreTipoMapa] != null) {
+            mapas[nombreTipoMapa].removeLayer(marcadores[nombreTipoMapa]);
+            marcadores[nombreTipoMapa] = null;
+        }
+    } else {
         let coord = window[variableGlobal][index][2].split(", ");
         if (marcadores[nombreTipoMapa] == null) {
             marcadores[nombreTipoMapa] = L.marker(coord).addTo(mapas[nombreTipoMapa]);
         }
         marcadores[nombreTipoMapa].setLatLng(coord);
     }
-   
-    
-   
 }
 
-mapas={};
-marcadores={};
+mapas = {};
+marcadores = {};
+
+// Función para mostrar el mapa y ajustar el tamaño
+function showMap(mapType) {
+    const mapElement = document.querySelector('.mapa[tipoMapa="' + mapType + '"]');
+    if (mapElement) {
+        mapElement.style.display = 'block'; // Mostrar el mapa
+
+        // Ajustar el tamaño del mapa
+        setTimeout(() => {
+            mapas[mapType + 'map'].invalidateSize();
+        }, 0);
+    }
+}

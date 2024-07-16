@@ -2,12 +2,14 @@
 const botonesAgregar = document.getElementsByClassName('agregar');
 Array.from(botonesAgregar).forEach(boton => {
     boton.addEventListener('click', function(event) {
+       
         const ids = JSON.parse(event.target.getAttribute('ids'));
         const idIndex = event.target.getAttribute('idIndex');
         const listaNombres = JSON.parse(event.target.getAttribute('lista'));
        
         let listaNombre = listaNombres[0];
-        
+        let derecha = document.getElementById("Derecha"+listaNombre);
+        derecha.style.display = "block";
         // Asegurarse de que la lista global esté inicializada
         if (window[listaNombre] == null) {
             window[listaNombre] = [];
@@ -45,7 +47,7 @@ Array.from(botonesAgregar).forEach(boton => {
             if (window[listaNombre][window[indexNombre]].length > 0) {
                 const valoresActuales = window[listaNombre][window[indexNombre]];
                 valoresActuales.forEach((valor, index) => {
-                    document.getElementById(ids[index]).value += valor;
+                    document.getElementById(ids[index]).value = valor;
                 });
             } else {
                 ids.forEach(id => {
@@ -108,7 +110,7 @@ document.querySelectorAll('.guardar').forEach(button => {
         
         const ids = JSON.parse(this.getAttribute('ids'));
         const listaNombres = JSON.parse(this.getAttribute('lista'));
-        console.log("hola");
+        console.log(listaNombres);
         let listaNombre = listaNombres[0];
         let indexNombre = listaNombre + 'Index';
         console.log(listaNombre+"Final");
