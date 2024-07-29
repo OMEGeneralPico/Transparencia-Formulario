@@ -4,7 +4,7 @@ async function readJson() {
 
     // Abre la solicitud
     // cuando pruebo en local es /../../../json/apis.json
-    xhr.open('GET', '../json/apis.json');
+    xhr.open('GET', 'https://omegeneralpico.github.io/Transparencia-Formulario/json/apis.json', true);
 
     // Espera a que la solicitud se complete
     const response = await new Promise((resolve, reject) => {
