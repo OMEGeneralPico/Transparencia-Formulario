@@ -22,6 +22,7 @@
 
     <form id="mainForm" method="post">
       <div data-sheet="OE-Participaciones">
+        <input type="text" style="display: none;" id="mes" value="" >
         <input type="text" value="Des.Economico" style="display: none;" name="sheetName"
           placeholder="Nombre de la hoja de cálculo">
         <div class=" justify-content-center " id="">
@@ -641,7 +642,7 @@
 
                 <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" idIndex="selectParticipacion"
                     lista='["Programas"]'
-                    ids='["nombreCapacitacion","estado","fechaini","inscripts","cursados","fechacierr","finaliza2"]'
+                    ids='["mes","nombreCapacitacion","estado","fechaini","inscripts","cursados","fechacierr","finaliza2"]'
                     class="btn btn-success guardar">
                     <i class="fa-solid fa-floppy-disk"></i> Guardar
                   </button></div>
@@ -760,7 +761,7 @@
                   </div>
                   <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" id="guardar"
                       idIndex="selectCreditosDados" lista='["CreditosDados"]' 
-                      ids='["Nombre","MontoProyecto","Monto","Genero","coordCreditos","tipoactividad","tipocredito","descrCredito"]'
+                      ids='["mes","Nombre","MontoProyecto","Monto","Genero","coordCreditos","tipoactividad","tipocredito","descrCredito"]'
                       class="btn btn-success guardar">
                       <i class="fa-solid fa-floppy-disk"></i> Guardar
                     </button></div>
@@ -847,7 +848,7 @@
 
 
                   <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" id="guardar" idIndex="selectProyectos"
-                      lista='["Proyectos"]' ids='["NombreProyecto","MontoProyecto","DescrProyecto","DestinoProyecto"]'
+                      lista='["Proyectos"]' ids='["mes","NombreProyecto","MontoProyecto","DescrProyecto","DestinoProyecto"]'
                       class="btn btn-success guardar">
                       <i class="fa-solid fa-floppy-disk"></i> Guardar
                     </button></div> <input type="text" class="form-control" name="ProyectosFinal" id="ProyectosFinal"
