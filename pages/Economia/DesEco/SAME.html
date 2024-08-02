@@ -16,7 +16,25 @@
     </style>
   
 </head>
-<body><form action="" id="mainForm">
+<body>
+  <div class=" justify-content-center " id="">
+    <div class="row">
+      <div class="nav">Hola pepe</div>
+      <ul class="nav nav-tabs nav-fill">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+            aria-selected="true">Home</a>
+        </li>
+
+
+      </ul>
+      <div class="col-12 col-lg-6">
+      </div>
+      <div class="col-12 col-lg-6">
+      </div>
+    </div>
+  </div>
+  <form action="" id="mainForm">
     <div
         class="container"
     >
@@ -24,6 +42,7 @@
 
     <hr class="solid">
     <div class="container-md" data-sheet="Same" style="padding-bottom: 10px;">
+      <input type="text" style="display: none;" id="mes" value="" >
     <h1>SAME</h1>
     <div class="row mb-5">
       <h2>Circulo de Emprendedores</h2>
@@ -69,7 +88,7 @@
 
 
   <div class="row justify-content-center align-items-stretch g-2" style="min-height: 9vh;">
-    <div class="col-6 d-flex flex-column">
+    <div class="col-3 d-flex flex-column">
       <div class="d-grid gap-2">
 
       </div>
@@ -77,11 +96,11 @@
         <!-- Opciones -->
       </select>
     </div>
-    <div class="col-6"><div id="DerechaFerias" style="display: none;">
+    <div class="col-9"><div id="DerechaFerias" style="display: none;">
       <div
     class="row mb-5"
   >
-    <div class="col-6">
+    <div class="col-3">
       
         <label for="" class="form-label"> Fecha</label>
         <input
@@ -112,15 +131,15 @@
       <div id="Feriamap" class="mapa" tipoMapa="Feria"></div>
   <label for="coordinates">Coordenadas:</label>
   <input type="text" id="coordFeria" readonly />
-    </div>
-  </div></div>
-    </div> <input type="text" class="form-control" name="FeriasFinal" id="FeriasFinal" style="display: none"
+    </div> </div> <input type="text" class="form-control" name="FeriasFinal" id="FeriasFinal" style="display: none"
     aria-describedby="helpId" placeholder="" />
     <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" idIndex="selectFerias" lista='["Ferias"]' indexglobal="0"
-      ids='["fechaFeria","nombreFeria","coordFeria"]' mapa="Feria"
+      ids='["fecha","fechaFeria","nombreFeria","coordFeria"]' mapa="Feria"
         class="btn btn-success guardar">
         <i class="fa-solid fa-floppy-disk"></i> Guardar
       </button></div>
+  </div></div>
+   
     
   </div>
 </div>
@@ -128,7 +147,6 @@
  
  
   <hr class="solid">
-  <hr>
   
     <div class="col-4">
       <h2>Participaciones </h2>

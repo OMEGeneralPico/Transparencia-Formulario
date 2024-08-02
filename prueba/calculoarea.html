@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcular Área con Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.min.js"></script>
+    <script src="https://unpkg.com/@turf/turf/turf.min.js"></script>
+</head>
+<body>
+    <div id="map" style="height: 500px;"></div>
+    <script>
+        // Inicializa el mapa
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        // Añade una capa de mapa base
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Añade la funcionalidad de dibujo con leaflet-geoman
+        map.pm.addControls({
+            position: 'topleft',
+            drawPolygon: true,
+            drawMarker: false,
+            drawPolyline: false,
+            drawCircle: false,
+            drawRectangle: false,
+            drawCircleMarker: false,
+            editMode: true,
+            dragMode: true,
+            cutPolygon: false,
+            removalMode: true
+        });
+
+        // Escucha el evento de creación de un polígono
+        map.on('pm:create', function(e) {
+            var layer = e.layer;
+            var geojson = layer.toGeoJSON();
+
+            // Calcula el área usando turf.js
+            var area = turf.area(geojson);
+
+            // Convierte el área a km² (de m²)
+            var areaKm2 = area / 1000000;
+
+            alert('Área del polígono: ' + areaKm2.toFixed(2) + ' km²');
+        });
+    </script>
+</body>
+</html>

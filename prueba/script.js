@@ -88,4 +88,25 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Por favor selecciona un archivo JSON primero.');
         }
     });
+
+    // Función para cargar y dibujar los marcadores desde un archivo JSON
+    document.getElementById('loadMarkersJson').addEventListener('click', function() {
+        var fileInput = document.getElementById('fileInput');
+        var file = fileInput.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var content = e.target.result;
+                var json = JSON.parse(content);
+                json.markers.forEach(function(marker) {
+                    L.marker([marker.lat, marker.lng]).addTo(map);
+                });
+                // Mostrar los marcadores en la consola
+                console.log(json.markers);
+            };
+            reader.readAsText(file);
+        } else {
+            alert('Por favor selecciona un archivo JSON primero.');
+        }
+    });
 });
