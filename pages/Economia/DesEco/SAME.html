@@ -465,10 +465,10 @@
       ];
       const totalSubmits = sheetNames.length;
       let completedSubmits = 0;
-      const hojaCheck = ['Same-Ferias', 'Same-Participaciones','Same-Capacitaciones','Same-Reuniones'];
-      const hojaFinal = [document.getElementById('FeriasFinal').value, document.getElementById('ParticipacionesFinal').value, document.getElementById('CapacitacionesFinal').value, document.getElementById('ReunionesFinal').value];
+      const hojaCheck = ['Same-Ferias', 'Same-Seguimientos','Same-Capacitaciones','Same-Reuniones'];
+      const hojaFinal = [document.getElementById('FeriasFinal').value, document.getElementById('SeguimientosFinal').value, document.getElementById('CapacitacionesFinal').value, document.getElementById('ReunionesFinal').value];
       let indexHojaCheck = 0;
-  
+      console.log(hojaFinal[1]);
       for (let index = 0; index < sheetNames.length; index++) {
           const sheetName = sheetNames[index];
           const formData = new FormData(form);  // Crear una nueva instancia de FormData por cada solicitud
