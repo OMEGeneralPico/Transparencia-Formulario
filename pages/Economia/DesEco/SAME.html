@@ -13,6 +13,10 @@
             height: 400px;
             width: 100%;
         }
+        #Seguimientosmap {
+            height: 400px;
+            width: 100%;
+        }
     </style>
   
 </head>
@@ -39,7 +43,7 @@
         class="container"
     >
        
-
+    <div class="container " >
     <hr class="solid">
     <div class="container-md" data-sheet="Same" style="padding-bottom: 10px;">
       <input type="text" style="display: none;" id="mes" value="" >
@@ -65,6 +69,43 @@
       </div>
   </div>
   <hr class="solid">
+<div
+  class="container-fluid"
+>
+  <div
+    class="row justify-content-center align-items-center g-2"
+  ><h2>Entregas de Insumos</h2>
+    <div class="col"><div class="mb-3">
+      <label for="" class="form-label">Total Entregas</label>
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        name="entegaInsumos"
+        id="entegaInsumos"
+        aria-describedby="helpId"
+        placeholder=""
+      />
+    
+    </div>
+    </div>
+    <div class="col"><div class="mb-3">
+      <label for="" class="form-label">Beneficiarios</label>
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        name="BeneficiariosInsumos"
+        id="BeneficiariosInsumos"
+        aria-describedby="helpId"
+        placeholder=""
+      />
+     
+    </div>
+    </div>
+ 
+  </div>
+  
+</div>
+
   <div class="container-md" data-sheet="Same-Ferias" style="padding-bottom: 10px;">
   <div class="col-4">
     <h2>Ferias </h2>
@@ -156,19 +197,21 @@
     
   </div>
 </div>
-  <div class="container-md" data-sheet="Same-Participaciones" style="padding-bottom: 10px;">
+
+
+  <div  data-sheet="Same-Seguimientos" style="padding-bottom: 10px;">
  
-    <div class="container-md" data-sheet="Same-Ferias" style="padding-bottom: 10px;">
+    <div class="container-md"  style="padding-bottom: 10px;">
       <div class="col-4">
         <h2>Seguimientos </h2>
       </div>
       <div class="row  align-items-center g-2">
         <div class="d-grid gap-2 col-3 mx-auto agregar"> 
-          <button type="button" id="Seguimientos"
-            idIndex="selectSeguimientos" lista='["Seguimientos"]' indexglobal="0"
-            ids='["Seguimientos"]'  mapa="Seguimientosmap"
-            class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>
-             Agregar</button></div>
+          <button type="button" id="crearSeguimientos"
+          idIndex="selectSeguimientos" lista='["Seguimientos"]' indexglobal="0"
+          ids='["fechaSeguimientos","RubroSeguimientos","NombreSeguimientos","coordSeguimientos"]' mapa="Seguimientosmap"
+          class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>
+           Agregar</button></div>
         <div class="d-grid gap-2 col-3 mx-auto">
           <button id="quitarParticipacion" class="btn btn-danger" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Quitar</button>
         </div>
@@ -176,10 +219,7 @@
         <div class="col-6">
     
         </div>
-      </div>
-    
-    
-    
+      </div>    
       <div class="row justify-content-center align-items-stretch g-2" style="min-height: 9vh;">
         <div class="col-3 d-flex flex-column">
           <div class="d-grid gap-2">
@@ -193,13 +233,37 @@
           <div
         class="row mb-5"
       >
-        <div class="col-3">
+      <div class="mb-3">
+        <label for="" class="form-label">Nombre</label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          name="NombreSeguimientos"
+          id="NombreSeguimientos"
+          aria-describedby="helpId"
+          placeholder=""
+        />
+       
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Rubro</label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          name="RubroSeguimientos"
+          id="RubroSeguimientos"
+          aria-describedby="helpId"
+          placeholder=""
+        />
+       
+      </div>
+        <div class="col-12 mb-3">
           
             <label for="" class="form-label"> Fecha</label>
             <input
                 type="date"
                 class="form-control form-control-lg "
-                name=""
+                name="fechaSeguimientos"
                 id="fechaSeguimientos"
                 aria-describedby="helpId"
                 placeholder=""
@@ -217,21 +281,90 @@
       <input type="text" id="coordSeguimientos" readonly />
         </div> </div> <input type="text" class="form-control" name="SeguimientosFinal" id="SeguimientosFinal" style="display: none"
         aria-describedby="helpId" placeholder="" />
-        <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" idIndex="selectFerias" lista='["Ferias"]' indexglobal="0"
-          ids='["fecha","fechaFeria","nombreFeria","coordFeria"]' mapa="Feria"
+        <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" idIndex="selectSeguimientos" lista='["Seguimientos"]' indexglobal="0"
+          ids='["fechaSeguimientos","RubroSeguimientos","NombreSeguimientos","coordSeguimientos"]' mapa="Seguimientos"
             class="btn btn-success guardar">
             <i class="fa-solid fa-floppy-disk"></i> Guardar
           </button></div>
       </div></div>
-       
+    </div>
         
       </div>
+    </div>         <div class="col-4">
+      <h2>Capacitaciones </h2>
     </div>
+    <div  data-sheet="Same-Capacitaciones" style="padding-bottom: 10px;">
+    <div class="row  align-items-center g-2">
+      <div class="d-grid gap-2 col-3 mx-auto agregar"> <button type="button" id="crearCapacitaciones"
+          idIndex="selectCapacitaciones" lista='["Capacitaciones"]' indexglobal="0"
+          ids='["nombreCapacitaciones","colaboracionCapacitaciones","lugarCapacitaciones","actividadCapacitaciones"]'
+          class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>
+           Agregar</button></div>
+      <div class="d-grid gap-2 col-3 mx-auto">
+        <button id="quitarCapacitaciones" class="btn btn-danger" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Quitar</button>
+      </div>
+
+      <div class="col-6">
+
+      </div>
+    </div>
+
+
+
+    <div class="row justify-content-center align-items-stretch g-2" style="min-height: 9vh;">
+      <div class="col-4 d-flex flex-column">
+        <div class="d-grid gap-2">
+
+        </div>
+        <select class="form-select flex-grow-1 mt-3" id="selectCapacitaciones" multiple aria-label=" select example">
+          <!-- Opciones -->
+        </select>
+      </div>
+      <div class="col-8">
+        <div id="DerechaCapacitaciones" style="display: none;">
+        <div class="mb-3">
+          <label for="nombreCapacitaciones" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombreCapacitaciones" placeholder="Nombre" />
+        </div>
+        <div class="mb-3">
+            <label for="nombreCapacitaciones" class="form-label">Detalles</label>
+                <label for="" class="form-label"></label>
+                <textarea class="form-control" name="" id="DetallesCapacitaciones" rows="3"></textarea>
+         
+            
+        
+ 
+        </div>
+       
+        <div class="mb-3">
+            <label for="lugarCapacitaciones" class="form-label">Fecha</label>
+            <input type="date" class="form-control" id="lugarCapacitaciones" placeholder="Nombre del lugar" />
+          </div>
+          <div class="mb-3">
+            <label for="lugarCapacitaciones" class="form-label">Institucion</label>
+            <input type="text" class="form-control" id="lugarCapacitaciones" placeholder="Nombre del lugar" />
+          </div>
+          <div class="mb-3">
+            <label for="lugarCapacitaciones" class="form-label">Participantes</label>
+            <input type="text" class="form-control" id="lugarCapacitaciones" placeholder="Nombre del lugar" />
+          </div> <div class="d-grid gap-2 col-12 mx-auto "> <button type="button" idIndex="selectCapacitaciones"
+            lista='["Capacitaciones"]'
+            ids='["nombreCapacitaciones","colaboracionCapacitaciones","lugarCapacitaciones","actividadCapacitaciones"]'
+            class="btn btn-success guardar">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar
+          </button>
+          <input type="text" class="form-control" name="CapacitacionesFinal" id="CapacitacionesFinal" style="display: none"
+          aria-describedby="helpId" placeholder="" />
+      </div>
+      </div>
+    </div>
+     </div></div>
   <hr class="solid">
   
     <div class="col-4">
       <h2>Reuniones </h2>
     </div>
+    <div  data-sheet="Same-Reuniones" style="padding-bottom: 10px;">
     <div class="row  align-items-center g-2">
       <div class="d-grid gap-2 col-3 mx-auto agregar"> <button type="button" id="crearParticipacion"
           idIndex="selectParticipacion" lista='["Participaciones"]' indexglobal="0"
@@ -296,8 +429,11 @@
             ids='["mes","nombreParticipacion","rubroParticipacion","totalPersonas","fechaParticipacion","lugarParticipacion","actividadParticipacion"]'
             class="btn btn-success guardar"> 
             <i class="fa-solid fa-floppy-disk"></i> Guardar
-          </button></div> </div> </div> 
-      </div>
+          </button>
+          <input type="text" class="form-control" name="ReunionesFinal" id="ReunionesFinal" style="display: none"
+          aria-describedby="helpId" placeholder="" />
+        </div> </div> </div> 
+      </div></div>
     </div>
  
   
@@ -325,11 +461,12 @@
       form.style.display = 'none';
       progressContainer.style.display = 'block';
   
-      const sheetNames = ['Same','Same-Ferias', 'Same-Participaciones'];
+      const sheetNames = ['Same','Same-Ferias', 'Same-Seguimientos','Same-Capacitaciones','Same-Reuniones'
+      ];
       const totalSubmits = sheetNames.length;
       let completedSubmits = 0;
-      const hojaCheck = ['Same-Ferias', 'Same-Participaciones'];
-      const hojaFinal = [document.getElementById('FeriasFinal').value, document.getElementById('ParticipacionesFinal').value];
+      const hojaCheck = ['Same-Ferias', 'Same-Participaciones','Same-Capacitaciones','Same-Reuniones'];
+      const hojaFinal = [document.getElementById('FeriasFinal').value, document.getElementById('ParticipacionesFinal').value, document.getElementById('CapacitacionesFinal').value, document.getElementById('ReunionesFinal').value];
       let indexHojaCheck = 0;
   
       for (let index = 0; index < sheetNames.length; index++) {
@@ -338,7 +475,7 @@
           formData.set('sheetName', sheetName);
           formData.set('MultiArray', hojaFinal[indexHojaCheck]);
           formData.set('checkHojaArray', hojaCheck[indexHojaCheck]);
-  
+          console.table(formData);
           try {
               const response = await fetch('https://script.google.com/macros/s/AKfycbwmPtwWi0BTf9uW6ze7wljlHrtVrT8bHCCBb_cLB01R8N_pCvLPD07IIHDE0Qc0v7PZvA/exec', {
                   method: 'POST',
@@ -375,6 +512,14 @@
     const mapElement = document.getElementById('Feriamap');
   document.getElementById('Feria').addEventListener('click', () => {
     showMap('Feria');
+
+
+    }
+
+  );
+  const SegmapElement = document.getElementById('Seguimientosmap');
+  document.getElementById('crearSeguimientos').addEventListener('click', () => {
+    showMap('Seguimientos');
 
 
     }

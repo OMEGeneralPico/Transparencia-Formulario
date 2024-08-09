@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var mapElements = document.querySelectorAll('.mapa');
   
     mapElements.forEach(function(mapElement) {
+        var tipoMapa = mapElement.getAttribute('tipoMapa');
         var map = L.map(mapElement).setView([-35.656, -63.757], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
@@ -9,10 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         var marker;
         
-        mapas[mapElement.getAttribute('tipoMapa') + 'map'] = map;
-      
+        mapas[tipoMapa + 'map'] = map;
+        console.table(mapas);
         map.on('click', function(e) {
-            const tipoMapa = mapElement.getAttribute('tipoMapa');
             var coordinatesInput = document.getElementById('coord' + tipoMapa);
         
             var lat = e.latlng.lat;

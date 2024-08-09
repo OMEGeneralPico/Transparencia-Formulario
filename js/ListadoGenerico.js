@@ -24,7 +24,7 @@ Array.from(botonesAgregar).forEach(boton => {
         const indexLocal = window[listaNombre].length;
         let indexNombre = listaNombre + 'Index';
         window[indexNombre] = indexLocal;
-
+        console.log(window[listaNombre]);
         // Agregar un array vacío para mantener la consistencia de los índices
         window[listaNombre].push([]);
         const mapanombre = event.target.getAttribute('mapa');
@@ -62,6 +62,7 @@ Array.from(botonesAgregar).forEach(boton => {
 
         // Vaciar los campos después de crear el elemento
         ids.forEach(id => {
+            console.log(id);
             document.getElementById(id).value = '';
         });
 
@@ -122,6 +123,7 @@ document.querySelectorAll('.guardar').forEach(button => {
             
             document.getElementById(listaNombre+"Final").value =  "[" + Separar(listaNombre) + "]";
         } else {
+
             window[listaNombre].push(valores);
             window[indexNombre] = window[listaNombre].length - 1;
             document.getElementById(listaNombre+"Final").value = Separar(listaNombre);
