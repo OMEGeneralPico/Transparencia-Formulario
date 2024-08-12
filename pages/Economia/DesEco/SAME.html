@@ -188,7 +188,7 @@
     </div> </div> <input type="text" class="form-control" name="FeriasFinal" id="FeriasFinal" style="display: none"
     aria-describedby="helpId" placeholder="" />
     <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" idIndex="selectFerias" lista='["Ferias"]' indexglobal="0"
-      ids='["fecha","fechaFeria","nombreFeria","coordFeria"]' mapa="Feria"
+      ids='["fechaFeria","totalFeriantes","nombreFeria","coordFeria"]' mapa="Feria"
         class="btn btn-success guardar">
         <i class="fa-solid fa-floppy-disk"></i> Guardar
       </button></div>
@@ -297,7 +297,7 @@
     <div class="row  align-items-center g-2">
       <div class="d-grid gap-2 col-3 mx-auto agregar"> <button type="button" id="crearCapacitaciones"
           idIndex="selectCapacitaciones" lista='["Capacitaciones"]' indexglobal="0"
-          ids='["nombreCapacitaciones","colaboracionCapacitaciones","lugarCapacitaciones","actividadCapacitaciones"]'
+          ids='["nombreCapacitaciones","fechaCapacitacion","lugarCapacitaciones","participantesCapacitaciones","DetallesCapacitaciones"]'
           class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>
            Agregar</button></div>
       <div class="d-grid gap-2 col-3 mx-auto">
@@ -337,19 +337,19 @@
         </div>
        
         <div class="mb-3">
-            <label for="lugarCapacitaciones" class="form-label">Fecha</label>
-            <input type="date" class="form-control" id="lugarCapacitaciones" placeholder="Nombre del lugar" />
+            <label for="fechaCapacitacion" class="form-label">Fecha</label>
+            <input type="date" class="form-control" id="fechaCapacitacion" placeholder="Nombre del lugar" />
           </div>
           <div class="mb-3">
             <label for="lugarCapacitaciones" class="form-label">Institucion</label>
             <input type="text" class="form-control" id="lugarCapacitaciones" placeholder="Nombre del lugar" />
           </div>
           <div class="mb-3">
-            <label for="lugarCapacitaciones" class="form-label">Participantes</label>
-            <input type="text" class="form-control" id="lugarCapacitaciones" placeholder="Nombre del lugar" />
+            <label for="participantesCapacitaciones" class="form-label">Participantes</label>
+            <input type="text" class="form-control" id="participantesCapacitaciones" placeholder="Numero" />
           </div> <div class="d-grid gap-2 col-12 mx-auto "> <button type="button" idIndex="selectCapacitaciones"
             lista='["Capacitaciones"]'
-            ids='["nombreCapacitaciones","colaboracionCapacitaciones","lugarCapacitaciones","actividadCapacitaciones"]'
+            ids='["nombreCapacitaciones","fechaCapacitacion","lugarCapacitaciones","participantesCapacitaciones","DetallesCapacitaciones"]'
             class="btn btn-success guardar">
             <i class="fa-solid fa-floppy-disk"></i> Guardar
           </button>
@@ -439,9 +439,16 @@
   
 
 
-</div></form><button type="button" class="btn btn-block btn-primary" onclick="submitForm()">
-  Submit
-</button>
+</div></form><div class="d-grid gap-2">
+  <button onclick="submitForm()"
+    type="button"
+    name=""
+    id=""
+    class="btn btn-success"
+  >
+    Subir
+  </button>
+</div>
 
 <div id="progressContainer" style="display: none;">
   <div class="progress">
