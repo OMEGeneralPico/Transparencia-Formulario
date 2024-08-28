@@ -37,6 +37,7 @@ Array.from(botonesAgregar).forEach(boton => {
 
         // Crear listener para la opción
         optionElement.addEventListener('click', function() {
+            
             // Asignar el índice local al índice global
             const valorE = optionElement.value;
             window[indexNombre] = valorE;
@@ -111,6 +112,8 @@ document.querySelectorAll('.guardar').forEach(button => {
         
         const ids = JSON.parse(this.getAttribute('ids'));
         const listaNombres = JSON.parse(this.getAttribute('lista'));
+        let derecha = document.getElementById("Derecha"+listaNombres);
+        derecha.style.display = "none";
         console.log(listaNombres);
         let listaNombre = listaNombres[0];
         let indexNombre = listaNombre + 'Index';
@@ -152,6 +155,18 @@ function Separar(nombreArray) {
     }
     return stringo;
 }
+window.addEventListener('beforeunload', function (event) {
+    // Selecciona el elemento con la clase "LadoDerecho"
+    var ladoDerecho = document.querySelector('.LadoDerecho');
+
+    // Verifica si el elemento es visible
+    if (ladoDerecho && ladoDerecho.offsetWidth > 0 && ladoDerecho.offsetHeight > 0) {
+        // Evita que la página se cierre sin una advertencia
+        var message = "Tienes cambios sin guardar. ¿Estás seguro de que quieres salir?";
+        event.returnValue = message; // Estándar moderno
+        return message;              // Para navegadores más antiguos
+    }
+});
 
 mapaBool = false;
 // Listener para botón 'quitar'

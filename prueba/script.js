@@ -1,4 +1,3 @@
-// script.js
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar el mapa
     var map = L.map('map').setView([-35.656, -63.757], 20); // Coordenadas aproximadas de General Pico, La Pampa
@@ -11,6 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar la capa de dibujo
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
+
+    // Inicializar la capa de marcadores
+    var markersLayer = new L.FeatureGroup();
+    map.addLayer(markersLayer);
 
     // Configurar las opciones de dibujo
     var drawControl = new L.Control.Draw({
@@ -97,12 +100,37 @@ document.addEventListener('DOMContentLoaded', function() {
             var reader = new FileReader();
             reader.onload = function(e) {
                 var content = e.target.result;
-                var json = JSON.parse(content);
-                json.markers.forEach(function(marker) {
-                    L.marker([marker.lat, marker.lng]).addTo(map);
-                });
-                // Mostrar los marcadores en la consola
-                console.log(json.markers);
+                try {
+                    var json = JSON.parse(content);
+
+                    // Recorrer todas las claves del objeto JSON
+                    Object.keys(json).forEach(function(key) {
+                        var entries = json[key];
+                        
+                        // Verificar si el valor es un array
+                        if (Array.isArray(entries)) {
+                            entries.forEach(function(entry) {
+                                // Asegurarse de que "Coord" y sus propiedades existen
+                                if (entry.Coord && entry.Coord.lat !== undefined && entry.Coord.lng !== undefined) {
+                                    var lat = entry.Coord.lat;
+                                    var lng = entry.Coord.lng;
+                                    var marker = L.marker([lat, lng]).addTo(markersLayer);
+
+                                    // Añadir un evento de clic para eliminar el marcador
+                                    marker.on('click', function() {
+                                        markersLayer.removeLayer(marker);
+                                    });
+                                } else {
+                                    console.warn(`Coordenadas faltantes en una de las entradas en la clave '${key}':`, entry);
+                                }
+                            });
+                        }
+                    });
+                    
+                } catch (err) {
+                    console.error('Error al analizar el JSON:', err);
+                    alert('Error al analizar el archivo JSON. Por favor verifica la estructura.');
+                }
             };
             reader.readAsText(file);
         } else {
