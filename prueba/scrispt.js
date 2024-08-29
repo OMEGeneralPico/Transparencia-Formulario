@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Extraer las coordenadas de todos los puntos
                 var heatData = [];
                 Object.keys(json).forEach(function(category) {
+       
                     json[category].forEach(function(item) {
                         if (item.Coord && item.Coord.lat && item.Coord.lng) {
                             heatData.push([item.Coord.lat, item.Coord.lng, 1]); // 1 es la intensidad por defecto

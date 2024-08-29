@@ -32,7 +32,18 @@
         if (dataMap) {
             dataMap.remove();
         }
-        dataMap = L.map(mapId).setView([-35.658412064282025, -63.76035690307618], 13);
+        dataMap = L.map(mapId).setView([-35.658412064282025, -63.76035690307618], 13);  dataMap.addControl(new L.Control.Fullscreen());
+        document.getElementById('datos-fijos-tab').addEventListener('click', function() {
+       
+            setTimeout(function() { 
+                if (dataMap) {console.log("Hola");
+                    dataMap.invalidateSize();  // Recalcula el tamaño del mapa
+        
+                    // Ajusta el zoom y centra el mapa si es necesario
+                   
+                }
+            }, 200);  // Asegúrate de que el mapa esté completamente visible
+        });
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(dataMap);
@@ -70,6 +81,7 @@
 
     function displayHeatmap(data) {
         if (!data || !Array.isArray(data)) {
+         
             console.error('Invalid data provided to displayHeatmap:', data);
             return;
         }
@@ -110,6 +122,7 @@
 
     function updateViewType(data) {
         const viewType = document.getElementById('fixedViewType').value;
+        dataMap.removeLayer(markersLayer);
         if (viewType === 'markers') {
             displayDataOnMap(data);
             document.getElementById('fixedHeatmapControls').style.display = 'none';
