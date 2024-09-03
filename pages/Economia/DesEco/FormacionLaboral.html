@@ -21,73 +21,72 @@
             <div class="col"> <h1>Centro Municipal de Formacion Laboral</h1></div>
             <hr>
   
-            <div class="col-4">
-              <h2>Programas </h2>
-            </div>
-            <div class="row  align-items-center g-2">
-              <div class="d-grid gap-2 col-3 mx-auto agregar"> <button type="button" id="crearParticipacion"
-                  idIndex="selectParticipacion" lista='["Participaciones"]' indexglobal="0"
-                  ids='["nombreParticipacion","colaboracionParticipacion","lugarParticipacion","actividadParticipacion"]'
-                  class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>
-                   Agregar</button></div>
-              <div class="d-grid gap-2 col-3 mx-auto">
-                <button id="quitarParticipacion" class="btn btn-danger" type="button"><i class="fa fa-trash" aria-hidden="true"></i> Quitar</button>
+            <div class="container-md" data-sheet="OE-Programas" style="padding-bottom: 10px;">
+              <div class="col-4">
+                  <h2>Programas</h2>
               </div>
-        
-              <div class="col-6">
-        
-              </div>
-            </div>
-        
-        
-        
-            <div class="row justify-content-center align-items-stretch g-2" style="min-height: 9vh;">
-              <div class="col-4 d-flex flex-column">
-                <div class="d-grid gap-2">
-        
-                </div>
-                <select class="form-select flex-grow-1 mt-3" id="selectParticipacion" multiple aria-label=" select example">
-                  <!-- Opciones -->
-                </select>
-              </div>
-              <div class="col-8">
-                <div class="mb-3">
-                  <label for="nombreParticipacion" class="form-label">Nombre</label>
-                  <input type="text" class="form-control" id="nombreParticipacion" placeholder="Nombre" />
-                </div>
-                <div class="mb-3">
-                    <label for="nombreParticipacion" class="form-label">Detalles</label>
-                        <label for="" class="form-label"></label>
-                        <textarea class="form-control" name="" id="" rows="3"></textarea>
-                 
-                    
-                
-         
-                </div>
-               
-                <div class="mb-3">
-                    <label for="lugarParticipacion" class="form-label">Fecha</label>
-                    <input type="date" class="form-control" id="lugarParticipacion" placeholder="Nombre del lugar" />
+              <div class="row align-items-center g-2">
+                  <div class="d-grid gap-2 col-3 mx-auto agregar">
+                      <button type="button" id="crearParticipacion"
+                              idIndex="selectParticipacion" lista='["Participaciones"]'
+                              indexglobal="0"
+                              ids='["nombreParticipacion","detalleParticipacion","fechaParticipacion","institucionParticipacion","participantesParticipacion"]'
+                              class="btn btn-primary">
+                          <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+                      </button>
                   </div>
-                  <div class="mb-3">
-                    <label for="lugarParticipacion" class="form-label">Institucion</label>
-                    <input type="text" class="form-control" id="lugarParticipacion" placeholder="Nombre del lugar" />
+                  <div class="d-grid gap-2 col-3 mx-auto">
+                      <button id="quitarParticipacion" class="btn btn-danger" type="button">
+                          <i class="fa fa-trash" aria-hidden="true"></i> Quitar
+                      </button>
                   </div>
-                  <div class="mb-3">
-                    <label for="lugarParticipacion" class="form-label">Participantes</label>
-                    <input type="text" class="form-control" id="lugarParticipacion" placeholder="Nombre del lugar" />
+                  <div class="col-6"></div>
+              </div>
+          
+              <div class="row justify-content-center align-items-stretch g-2" style="min-height: 9vh;">
+                  <div class="col-6 d-flex flex-column">
+                      <div class="d-grid gap-2"></div>
+                      <select class="form-select flex-grow-1 mt-3" id="selectParticipacion" multiple aria-label="select example">
+                          <!-- Opciones -->
+                      </select>
+                  </div>
+                  <div class="col-6">
+                      <div id="DerechaParticipaciones" class="LadoDerecho" style="display: none;">
+                          <div class="mb-3">
+                              <label for="nombreParticipacion" class="form-label">Nombre</label>
+                              <input type="text" class="form-control" id="nombreParticipacion" placeholder="Nombre" />
+                          </div>
+                          <div class="mb-3">
+                              <label for="detalleParticipacion" class="form-label">Detalles</label>
+                              <textarea class="form-control" id="detalleParticipacion" rows="3"></textarea>
+                          </div>
+                          <div class="mb-3">
+                              <label for="fechaParticipacion" class="form-label">Fecha</label>
+                              <input type="date" class="form-control" id="fechaParticipacion" placeholder="Fecha" />
+                          </div>
+                          <div class="mb-3">
+                              <label for="institucionParticipacion" class="form-label">Institución o Lugar</label>
+                              <input type="text" class="form-control" id="institucionParticipacion" placeholder="Institución" />
+                          </div>
+                          <div class="mb-3">
+                              <label for="participantesParticipacion" class="form-label">Participantes</label>
+                              <input type="text" class="form-control" id="participantesParticipacion" placeholder="Participantes" />
+                          </div>
+                          <div class="d-grid gap-2 col-12 mx-auto">
+                              <button type="button" idIndex="selectParticipacion"
+                                      lista='["Participaciones"]'
+                                      ids='["nombreParticipacion","detalleParticipacion","fechaParticipacion","institucionParticipacion","participantesParticipacion"]'
+                                      class="btn btn-success guardar">
+                                  <i class="fa-solid fa-floppy-disk"></i> Guardar
+                              </button>
+                          </div>
+                      </div>
+                      <input type="text" class="form-control" name="ParticipacionesFinal" id="ParticipacionesFinal"
+                             style="display: none" aria-describedby="helpId" placeholder="" />
                   </div>
               </div>
-              
-              <div class="d-grid gap-2 col-12 mx-auto guardar"> <button type="button" idIndex="selectParticipacion"
-                  lista='["Participaciones"]'
-                  ids='["nombreParticipacion","colaboracionParticipacion","lugarParticipacion","actividadParticipacion"]'
-                  class="btn btn-success guardar">
-                  <i class="fa-solid fa-floppy-disk"></i> Guardar
-                </button></div>
-        
-            </div>
-        </div>
+          </div>
+          
         
     </div>
     

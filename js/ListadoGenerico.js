@@ -38,6 +38,7 @@ Array.from(botonesAgregar).forEach(boton => {
         // Crear listener para la opción
         optionElement.addEventListener('click', function() {
             
+            derecha.style.display = "block";
             // Asignar el índice local al índice global
             const valorE = optionElement.value;
             window[indexNombre] = valorE;
@@ -61,6 +62,7 @@ Array.from(botonesAgregar).forEach(boton => {
 
         paginationContainer.appendChild(optionElement);
 
+        console.table(ids);
         // Vaciar los campos después de crear el elemento
         ids.forEach(id => {
             console.log(id);

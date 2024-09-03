@@ -191,13 +191,12 @@
         </div>
         <div class="row justify-content-center  align-items-center g-2">
           
-          
-          <div class="container-md" style="padding-bottom: 10px;">
-            <hr>
+        </div></div></div><hr>
+          <div class="container-md" style="padding-bottom: 10px;"> 
             <div class="col-12">
               <h2>Solicitudes</h2>
             </div>
-            <div class="row  align-items-center g-2">
+            <div class="row  align-items-center g-2" data-sheet="OE-Solicitudes">
               <div class="d-grid gap-2 col-3 mx-auto agregar"> <button type="button" id="crearSolicitud"
                   idIndex="selectSolicitud" lista='["Solicitudes"]' indexglobal="0"
                   ids='["rubroSolicitud","puestoSolicitud","EmpresaSolicitud","EXPSolicitud"]'
@@ -246,19 +245,19 @@
                     <option value="Intermedio / Semi Senior">Intermedio / Semi Senior</option>
                     <option value="Experimentado / Senior">Experimentado / Senior</option>
                   </select>
-                </div>
+                </div>  <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" id="guardar" idIndex="selectSolicitud"
+                  lista='["Solicitudes"]' ids='["mes","rubroSolicitud","puestoSolicitud","EmpresaSolicitud","EXPSolicitud"]'
+                  class="btn btn-success guardar">
+                  <i class="fa-solid fa-floppy-disk"></i> Guardar
+                </button></div>
               </div>
             </div>
             </div>
 
-
+          
           </div>
         </div>
-        <div class="d-grid gap-2 col-12 mx-auto"> <button type="button" id="guardar" idIndex="selectSolicitud"
-            lista='["Solicitudes"]' ids='["mes","rubroSolicitud","puestoSolicitud","EmpresaSolicitud","EXPSolicitud"]'
-            class="btn btn-success guardar">
-            <i class="fa-solid fa-floppy-disk"></i> Guardar
-          </button></div>
+       
       </div>
 
       <input type="text" class="form-control" name="SolicitudesFinal" id="SolicitudesFinal" style="display: none" value="[]"
@@ -268,7 +267,71 @@
 
     </div>
    
-    <hr>
+    <hr>           <div class="container-md" data-sheet="OE-Programas" style="padding-bottom: 10px;">
+      <div class="col-4">
+          <h2>Programas</h2>
+      </div>
+      <div class="row align-items-center g-2">
+          <div class="d-grid gap-2 col-3 mx-auto agregar">
+              <button type="button" id="crearProgramas"
+                      idIndex="selectProgramas" lista='["Programas"]'
+                      indexglobal="0"
+                      ids='["nombreProgramas","detalleProgramas","fechaProgramas","institucionProgramas","participantesProgramas"]'
+                      class="btn btn-primary">
+                  <i class="fa fa-plus" aria-hidden="true"></i> Agregar
+              </button>
+          </div>
+          <div class="d-grid gap-2 col-3 mx-auto">
+              <button id="quitarProgramas" class="btn btn-danger" type="button">
+                  <i class="fa fa-trash" aria-hidden="true"></i> Quitar
+              </button>
+          </div>
+          <div class="col-6"></div>
+      </div>
+  
+      <div class="row justify-content-center align-items-stretch g-2" style="min-height: 9vh;">
+          <div class="col-6 d-flex flex-column">
+              <div class="d-grid gap-2"></div>
+              <select class="form-select flex-grow-1 mt-3" id="selectProgramas" multiple aria-label="select example">
+                  <!-- Opciones -->
+              </select>
+          </div>
+          <div class="col-6">
+              <div id="DerechaProgramas" class="LadoDerecho" style="display: none;">
+                  <div class="mb-3">
+                      <label for="nombreProgramas" class="form-label">Nombre</label>
+                      <input type="text" class="form-control" id="nombreProgramas" placeholder="Nombre" />
+                  </div>
+                  <div class="mb-3">
+                      <label for="detalleProgramas" class="form-label">Detalles</label>
+                      <textarea class="form-control" id="detalleProgramas" rows="3"></textarea>
+                  </div>
+                  <div class="mb-3">
+                      <label for="fechaProgramas" class="form-label">Fecha</label>
+                      <input type="date" class="form-control" id="fechaProgramas" placeholder="Fecha" />
+                  </div>
+                  <div class="mb-3">
+                      <label for="institucionProgramas" class="form-label">Institución o Lugar</label>
+                      <input type="text" class="form-control" id="institucionProgramas" placeholder="Institución" />
+                  </div>
+                  <div class="mb-3">
+                      <label for="participantesProgramas" class="form-label">Participantes</label>
+                      <input type="text" class="form-control" id="participantesProgramas" placeholder="Participantes" />
+                  </div>
+                  <div class="d-grid gap-2 col-12 mx-auto">
+                      <button type="button" idIndex="selectparticipantesProgramas"
+                              lista='["Programas"]'
+                              ids='["mes","nombreProgramas","detalleProgramas","fechaProgramas","institucionProgramas","participantesProgramas"]'
+                              class="btn btn-success guardar">
+                          <i class="fa-solid fa-floppy-disk"></i> Guardar
+                      </button>
+                  </div>
+              </div>
+              <input type="text" class="form-control" name="ProgramasFinal" id="ProgramasFinal"
+                     style="display: none" aria-describedby="helpId" placeholder="" />
+          </div>
+      </div>
+  </div><hr>
     <div class="container-md" data-sheet="OE-Participaciones" style="padding-bottom: 10px;">
       <div class="col-4">
         <h2>Participaciones </h2>
@@ -333,11 +396,18 @@
           aria-describedby="helpId" placeholder="" />
         </div> 
       </div>
+    </div><hr>
     </div>
+    <div class="d-grid gap-2">
+      <button
+        type="button"
+        name=""
+        id="" onclick=submitForm()
+        class="btn btn-success"
+      >
+        Subir Informacion
+      </button>
     </div>
-    <button type="button" class="btn btn-block btn-primary" onclick="submitForm()">
-      Submit
-    </button>
   </form>
   <div id="progressContainer" style="display: none;">
     <div class="progress">
@@ -357,11 +427,11 @@ async function submitForm() {
     form.style.display = 'none';
     progressContainer.style.display = 'block';
 
-    const sheetNames = ['OE','OE-Participaciones', 'OE-Solicitudes'];
+    const sheetNames = ['OE','OE-Participaciones', 'OE-Solicitudes','OE-Programas'];
     const totalSubmits = sheetNames.length;
     let completedSubmits = 0;
-    const hojaCheck = ['OE-Participaciones', 'OE-Solicitudes'];
-    const hojaFinal = [document.getElementById('ParticipacionesFinal').value, document.getElementById('SolicitudesFinal').value];
+    const hojaCheck = ['OE-Participaciones', 'OE-Solicitudes','OE-Programas'];
+    const hojaFinal = [document.getElementById('ParticipacionesFinal').value, document.getElementById('SolicitudesFinal').value,document.getElementById('ProgramasFinal').value];
     let indexHojaCheck = 0;
 
     for (let index = 0; index < sheetNames.length; index++) {
